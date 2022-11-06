@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$('#appData').DataTable({
 		"ajax": {
 			"type": "GET",
-			"url": serviceUrl + "/members",
+			"url": serviceUrl + "/users",
 			"dataSrc": ""
 		},
 		"columns": [
@@ -51,7 +51,7 @@ $(document).ready(function() {
 		var memberId = $(this).parents("tr").find("td:nth-child(1)	").text();
 
 		$.ajax({
-			url: serviceUrl + "members/" + memberId,
+			url: serviceUrl + "users/" + memberId,
 			type: 'DELETE',
 			async: false,
 			success: function(result) {
@@ -115,7 +115,7 @@ $(document).ready(function() {
 				obj['city'] = city;
 				
 				$.ajax({
-				url: serviceUrl + "members",
+				url: serviceUrl + "users",
 				type: 'post',
 				async: false,
 				contentType: "application/json",
@@ -151,14 +151,14 @@ window.location.reload();
 				obj['city'] = city;
 
 $.ajax({
-				url: serviceUrl + "members/"+id,
+				url: serviceUrl + "users/"+id,
 				type: 'put',
 				async: false,
 				contentType: "application/json",
 				data: JSON.stringify(obj),
 				success: function(result) {
 
-					console.log("Upadated");
+					console.log("Updated");
 					$(this).parents("tr").find(".add, .edit").toggle();
 					$('.edit').css("display", "inline-block");
 					$('.add').css("display", "none");

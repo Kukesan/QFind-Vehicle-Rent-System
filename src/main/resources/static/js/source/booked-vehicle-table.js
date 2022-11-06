@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$('#appData').DataTable({
 		"ajax": {
 			"type": "GET",
-			"url": serviceUrl + "/borrowings",
+			"url": serviceUrl + "/bookings",
 			"dataSrc": ""
 		},
 		"columns": [
@@ -45,7 +45,6 @@ $(document).ready(function() {
 		$(this).parents("tr").find("td:nth-child(7)").each(function() {
 			$(this).html('  <input type="checkbox" id="checks1" name="checks"> <label for="checks1">Returned</label>');
 		});
-
 		$(this).parents("tr").find(".add, .edit").toggle();
 		$(".add-new").attr("disabled", "disabled");
 	});
@@ -59,7 +58,7 @@ $(document).ready(function() {
 		var borrowId = $(this).parents("tr").find("td:nth-child(1)	").text();
 
 		$.ajax({
-			url: serviceUrl + "borrowings/" + borrowId,
+			url: serviceUrl + "bookings/" + borrowId,
 			type: 'DELETE',
 			async: false,
 			success: function(result) {
@@ -80,7 +79,7 @@ $(document).ready(function() {
 		var input = $(this).parents("tr").find('input[type="text"]');
 		var count = 0;
 		var id = $(this).parents("tr").find("td:first-child").text();
-var returnOrnot = !($(this).prop('checked')==true);
+		var returnOrnot = !($(this).prop('checked')==true);
 
 		input.each(function() {
 			if (!$(this).val()) {
@@ -110,10 +109,7 @@ var returnOrnot = !($(this).prop('checked')==true);
 						// code block
 						memId = $(this).val();
 						break;
-
-
 				}
-
 			});
 
 
@@ -124,7 +120,7 @@ var returnOrnot = !($(this).prop('checked')==true);
 				
 
 				$.ajax({
-					url: serviceUrl + "borrowings",
+					url: serviceUrl + "bookings",
 					type: 'post',
 					async: false,
 					contentType: "application/json",
@@ -141,8 +137,7 @@ var returnOrnot = !($(this).prop('checked')==true);
 
 						$(".add-new").removeAttr("disabled");
 						$('.success').message('Created Book Success: ' + result.id + ' | ');
-window.location.reload();
-
+					window.location.reload();
 
 					},
 					error: function(e) {
@@ -150,10 +145,6 @@ window.location.reload();
 						$('.error').message('Created Book Failed: ' + bookId + ' | ');
 					}
 				});
-
-
-
-
 
 			} else {
 				obj['bookId'] = bookId;
@@ -163,35 +154,28 @@ window.location.reload();
 				console.log("#######################"+returnOrnot);
 
 				$.ajax({
-					url: serviceUrl + "borrowings/" + id,
+					url: serviceUrl + "bookings/" + id,
 					type: 'put',
 					async: false,
 					contentType: "application/json",
 					data: JSON.stringify(obj),
 					success: function(result) {
 
-						console.log("Upadated");
+						console.log("Updated");
 						$(this).parents("tr").find(".add, .edit").toggle();
 						$('.edit').css("display", "inline-block");
 						$('.add').css("display", "none");
 
 						$(".add-new").removeAttr("disabled");
 						$('.success').message('Updating App Success: ' + name + ' | ');
-window.location.reload();
-
-
+						window.location.reload();
 					},
 					error: function(e) {
 						console.log(e);
-						$('.error').message('Updating App Failed: ' + isbn + ' | ');
+						$('.error').message('Updating App Failed: ' + number + ' | ');
 					}
 				});
-
-
-
 			}
-
-
 		}
 	});
 
@@ -216,7 +200,4 @@ window.location.reload();
 		$("table tbody tr").eq(index).find(".add, .edit").toggle();
 		//$('[data-toggle="tooltip"]').tooltip();
 	});
-
-
-
 });
