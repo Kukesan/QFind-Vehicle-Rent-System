@@ -13,7 +13,6 @@ import com.uom.qfind.service.AdminService;
 
 @Controller
 public class MainController {
-
 	@Autowired
 	private AdminService adminService;
 	

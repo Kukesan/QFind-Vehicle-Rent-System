@@ -151,11 +151,7 @@ window.location.reload();
 					$('.error').message('Created Book Failed: ' + number + ' | ');
 				}
 			});
-				
-				
-				
-				
-				
+
 			} else {
 				obj['number'] = number;
 				obj['name'] = name;
@@ -208,7 +204,4 @@ window.location.reload();
 		$("table tbody tr").eq(index).find(".add, .edit").toggle();
 		//$('[data-toggle="tooltip"]').tooltip();
 	});
-
-
-
 });

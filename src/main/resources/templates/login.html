@@ -6,7 +6,6 @@
 	<style>
 		body {
 			font-family: Arial, Helvetica, sans-serif;
-			background-image: url("img/uom-library.jpg");
 			background-repeat: no-repeat;
 			background-attachment: fixed;
 			background-position: center;
@@ -25,7 +24,7 @@
 
 		/* Set a style for all buttons */
 		button {
-			background-color: #04AA6D;
+			background-color: #0089cc;
 			color: white;
 			padding: 14px 20px;
 			margin: 8px 0;
@@ -154,60 +153,84 @@
 		}
 
 		.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  border: 3px solid green;
-}
+			justify-content: left;
+			height: auto;
+			width: 100px;
+
+		}
+		.loginbutton {
+			font-size: 25px;
+			background-color: #0089cc;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+			border-radius: 5px;
+		}
+
+		button:hover {
+			opacity: 0.8;
+		}
 	</style>
 </head>
 
-<body>
-<div class="center">
+<body><div style=" height:100vh;   display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-image: url(http://goaslocal.com/wp-content/uploads/2019/12/rent-a-car-Albania.jpg);">
+	<div style="width: 80%;
+    color: white;
+    font-size: 28px;
+    text-align: justify;
+    font-weight: 900;">Compare the best Car Rental deals in the USA. We have all the top brands & local suppliers. Look for enhanced cleaning & contactless pick up options. We are rated 4+ stars. 24/7 Customer Service. Low Rental Rates. No Booking Fees.</div>
+	<div class="center">
+		<button class="loginbutton" onclick="document.getElementById('id01').style.display='block'" >Login</button>
+	</div></div>
 
-	<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-</div>
-	<div id="id01" class="modal">
+<div id="id01" class="modal">
 
-		<form class="modal-content animate" action="#" th:action="@{/home}" th:object="${admin}" method="post">
-			<div class="imgcontainer">
+	<form class="modal-content animate" action="#" th:action="@{/home}" th:object="${admin}" method="post">
+		<div class="imgcontainer">
 				<span onclick="document.getElementById('id01').style.display='none'" class="close"
-					title="Close Modal">&times;</span>
-			</div>
+					  title="Close Modal">&times;</span>
+		</div>
 
-			<div class="container">
-				<label for="uname"><b>Username</b></label>
-				<input type="text" placeholder="Enter Username" th:field="*{username}" required>
+		<div class="container">
+			<label for="uname"><b>Username</b></label>
+			<input type="text" placeholder="Enter Username" th:field="*{username}" required>
 
-				<label for="psw"><b>Password</b></label>
-				<input type="password" placeholder="Enter Password" th:field="*{password}" required>
+			<label for="psw"><b>Password</b></label>
+			<input type="password" placeholder="Enter Password" th:field="*{password}" required>
 
-				<button type="submit">Login</button>
-				<label>
-					<input type="checkbox" checked="checked" name="remember"> Remember me
-				</label>
-			</div>
+			<button type="submit">Login</button>
+			<label>
+				<input type="checkbox" checked="checked" name="remember"> Remember me
+			</label>
+		</div>
 
-			<div class="container" style="background-color:#f1f1f1">
-				<button type="button" onclick="document.getElementById('id01').style.display='none'"
+		<div class="container" style="background-color:#f1f1f1">
+			<button type="button" onclick="document.getElementById('id01').style.display='none'"
 					class="cancelbtn">Cancel</button>
-				<span class="psw">Forgot <a href="#">password?</a></span>
-			</div>
-		</form>
-	</div>
+			<span class="psw">Forgot <a href="#">password?</a></span>
+		</div>
+	</form>
+</div>
 
-	<script>
-		// Get the modal
-		var modal = document.getElementById('id01');
+<script>
+	// Get the modal
+	var modal = document.getElementById('id01');
 
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function (event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
 		}
-	</script>
+	}
+</script>
 
 </body>
 
